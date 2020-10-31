@@ -1,6 +1,6 @@
 struct tree {
   ll t[N << 2], u[N << 2];
-  void biuld(int v = 1, int tl = 1, int tr = n) {
+  void build(int v = 1, int tl = 1, int tr = n) {
     if (tl == tr) {
       t[v] = a[tl];
       return;
@@ -38,7 +38,7 @@ struct tree {
     else change(pos, val, v << 1 | 1, tm + 1, tr);
     t[v] = t[v << 1] + t[v << 1 | 1];
   }
-  void upd(int l, int r, int x, int v = 1, int tl = 1, int tr = n) {
+  void upd(int l, int r, ll x, int v = 1, int tl = 1, int tr = n) {
     if (l <= tl && tr <= r) {
       t[v] += x * (tr - tl + 1);
       u[v] += x;
