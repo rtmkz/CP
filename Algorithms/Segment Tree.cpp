@@ -26,4 +26,16 @@ struct tree {
     else change(pos, val, v << 1 | 1, tm + 1, tr);
     t[v] = t[v << 1] + t[v << 1 | 1];
   }
+  void upd(int l, int r, int x, int v = 1, int tl = 1, int tr = n) {
+    if (l <= tl && tr <= r) {
+      t[v] += x * (tr - tl + 1);
+      u[v] += x;
+      return;
+    }
+    if (tl > r || tr < l) return;
+    int tm = tl + tr >> 1;
+    upd(l, r, x, v << 1, tl, tm);
+    upd(l, r, x, v << 1 | 1, tm + 1, tr);
+    t[v] = t[v << 1] + t[v << 1 | 1];
+  }
 };
